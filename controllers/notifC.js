@@ -19,10 +19,13 @@ export const sendNotification = async (req, res) => {
   };
 
   try {
-    const response = await admin.messaging().send(message);
-    return res
-      .status(200)
-      .json({ msg: "Notification sent successfully", response });
+    const response = await admin.messaging().sendEachForMulticast(message);
+    return res.status(200).json({
+      msg: "Notification sent successfully",
+      successCount: response.successCount,
+      failureCount: response.failureCount,
+      responses: response.responses,
+    });
   } catch (error) {
     return res
       .status(500)
