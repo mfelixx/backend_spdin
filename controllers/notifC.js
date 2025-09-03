@@ -1,7 +1,7 @@
 import admin from "../index.js";
 
 export const sendNotification = async (req, res) => {
-  const { token, body, id_perjadin } = req.body;
+  const { tokens, body, id_perjadin } = req.body;
 
   if (
     !token ||
@@ -14,7 +14,7 @@ export const sendNotification = async (req, res) => {
   }
 
   const message = {
-    token: token,
+    tokens: tokens,
     notification: {
       body: body,
     },
