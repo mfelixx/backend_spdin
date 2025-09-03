@@ -3,12 +3,18 @@ import admin from "../index.js";
 export const sendNotification = async (req, res) => {
   const { token, body, id_perjadin } = req.body;
 
-  if (!token || !id_perjadin || !body) {
+  if (
+    !token ||
+    !Array.isArray(tokens) ||
+    token.length === 0 ||
+    !id_perjadin ||
+    !body
+  ) {
     return res.status(400).json({ msg: "Missing required fields" });
   }
 
   const message = {
-    token: Array.isArray(token) ? token : [token],
+    token: token,
     notification: {
       body: body,
     },
