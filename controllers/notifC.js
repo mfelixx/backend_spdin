@@ -8,7 +8,7 @@ export const sendNotification = async (req, res) => {
   }
 
   const message = {
-    token: token,
+    token: Array.isArray(token) ? token : [token],
     notification: {
       body: body,
     },
