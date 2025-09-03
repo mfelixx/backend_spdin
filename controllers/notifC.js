@@ -5,7 +5,7 @@ export const sendNotification = async (req, res) => {
 
   if (
     !token ||
-    !Array.isArray(tokens) ||
+    !Array.isArray(token) ||
     token.length === 0 ||
     !id_perjadin ||
     !body
